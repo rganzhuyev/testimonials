@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_rg_testimonials_index>
+        <reference name="content">
+            <block type="rg_testimonials/adminhtml_testimonials_main" name="admin.testimonials">
+                <block type="rg_testimonials/adminhtml_testimonials_grid" name="site.testimonials.grid"/>
+            </block>
+        </reference>
+    </adminhtml_rg_testimonials_index>
+
+    <adminhtml_rg_testimonials_pending>
+        <update handle="adminhtml_rg_testimonials_index" />
+    </adminhtml_rg_testimonials_pending>
+</layout>

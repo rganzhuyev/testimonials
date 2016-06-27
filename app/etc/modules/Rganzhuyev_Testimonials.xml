@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Rganzhuyev_Testimonials>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog />
+            </depends>
+        </Rganzhuyev_Testimonials>
+    </modules>
+</config>

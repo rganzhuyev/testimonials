@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <reviews_ratings>
+                    <children>
+                        <testimonials translate="title" module="rg_testimonials">
+                            <title>Testimonials</title>
+                            <sort_order>1</sort_order>
+                            <children>
+                                <pending translate="title" module="rg_testimonials">
+                                    <title>Pending Testimonials</title>
+                                    <action>adminhtml/rg_testimonials/pending/</action>
+                                </pending>
+                                <all translate="title" module="rg_testimonials">
+                                    <title>All Testimonials</title>
+                                    <action>adminhtml/rg_testimonials/</action>
+                                </all>
+                            </children>
+                        </testimonials>
+                    </children>
+                </reviews_ratings>
+            </children>
+        </catalog>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <reviews_ratings>
+                                <children>
+                                    <testimonials>
+                                        <children>
+                                            <all translate="title" module="rg_testimonials">
+                                                <title>All Testimonials</title>
+                                            </all>
+                                            <pending translate="title" module="rg_testimonials">
+                                                <title>Pending Testimonials</title>
+                                            </pending>
+                                        </children>
+                                    </testimonials>
+                                </children>
+                            </reviews_ratings>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

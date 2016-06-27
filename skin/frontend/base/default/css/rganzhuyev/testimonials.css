@@ -1,0 +1,77 @@
+.testimonial-item span.author, .testimonial-item .testimonial-content .title {
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+}
+.testimonial-item .date {
+    color: #c0c0c0;
+    padding-left: 25px;
+}
+.testimonial-item .testimonial-content p.content {
+    margin: 0;
+}
+.testimonial-item {
+    padding-bottom: 20px;
+}
+#testimonial-form-wrapper ul {
+    padding: 0;
+    margin: 0;
+}
+#testimonial-form-wrapper ul li {
+    list-style-type: none;
+    margin: 0;
+}
+#testimonial-form-wrapper input,
+#testimonial-form-wrapper textarea
+{
+    width: 100%;
+    min-width:100%;
+    padding: 10px;
+    border: 1px solid #D7D7D2;
+    font-size: 14px;
+}
+#testimonial-form-wrapper select
+{
+    width: 938px;
+    font-size: 14px;
+}
+#testimonial-form-wrapper .title input {
+    background: #F0F0EC;
+}
+#testimonial-form-wrapper .text, #testimonial-form-wrapper .mark {
+    margin-bottom: 20px;
+}
+#testimonial-form-wrapper .text textarea {
+    border-top: none;
+}
+#testimonial-form-wrapper .text textarea,
+#testimonial-form-wrapper .username input,
+#testimonial-form-wrapper .email input {
+    background: #F7F7F4;
+}
+#testimonial-form-wrapper .username input,
+#testimonial-form-wrapper .email input {
+    margin-bottom: 10px;
+}
+#testimonial-form-wrapper button {
+    background: #80BE1A;
+    padding: 10px 20px;
+}
+#testimonial-form-wrapper .write-testimonial-button {
+    display: block;
+}
+#testimonial-form-wrapper .submit-testimonial-button {
+    display: none;
+}
+#testimonial-form-wrapper .form-list {
+    display: none;
+}
+#testimonial-form-wrapper.active .write-testimonial-button {
+    display: none;
+}
+#testimonial-form-wrapper.active .submit-testimonial-button {
+    display: block;
+}
+#testimonial-form-wrapper.active .form-list {
+    display: block;
+}

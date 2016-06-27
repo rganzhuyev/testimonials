@@ -1,0 +1,7 @@
+/app/etc/modules
+/app/etc/*
+!/app/etc/modules/Rganzhuyev_Testimonials.xml
+/app/code/core
+/app/code/community
+/app/design/frontend/default/
+/app/design/frontend/rwd/

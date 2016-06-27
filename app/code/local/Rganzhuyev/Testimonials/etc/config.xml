@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Rganzhuyev_Testimonials>
+            <version>0.0.1</version>
+        </Rganzhuyev_Testimonials>
+    </modules>
+
+    <global>
+        <blocks>
+            <rg_testimonials>
+                <class>Rganzhuyev_Testimonials_Block</class>
+            </rg_testimonials>
+        </blocks>
+        <helpers>
+            <rg_testimonials>
+                <class>Rganzhuyev_Testimonials_Helper</class>
+            </rg_testimonials>
+        </helpers>
+        <models>
+            <rg_testimonials>
+                <class>Rganzhuyev_Testimonials_Model</class>
+                <resourceModel>rg_testimonials_resource</resourceModel>
+            </rg_testimonials>
+
+            <rg_testimonials_resource>
+                <class>Rganzhuyev_Testimonials_Model_Resource</class>
+                <entities>
+                    <testimonial>
+                        <table>rg_testimonials_testimonial</table>
+                    </testimonial>
+                </entities>
+            </rg_testimonials_resource>
+        </models>
+
+        <resources>
+            <rg_testimonials_setup>
+                <setup>
+                    <module>Rganzhuyev_Testimonials</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </rg_testimonials_setup>
+        </resources>
+    </global>
+
+
+
+    <frontend>
+        <routers>
+            <rg_testimonials>
+                <use>standard</use>
+                <args>
+                    <module>Rganzhuyev_Testimonials</module>
+                    <frontName>rg_testimonials</frontName>
+                </args>
+            </rg_testimonials>
+        </routers>
+
+        <layout>
+            <updates>
+                <rg_testimonials>
+                    <file>rganzhuyev/testimonials.xml</file>
+                </rg_testimonials>
+            </updates>
+        </layout>
+
+        <!--
+        <translate>
+            <modules>
+                <Rganzhuyev_Testimonials>
+                    <files>
+                        <default>Rganzhuyev_Testimonials.csv</default>
+                    </files>
+                </Rganzhuyev_Testimonials>
+            </modules>
+        </translate>
+        -->
+
+        <events>
+            <!-- Observer for adding "Testimonials" menu item to topmenu -->
+            <page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <addTestimonialMenuItem>
+                        <class>rg_testimonials/observer</class>
+                        <method>addTestimonialMenuItem</method>
+                    </addTestimonialMenuItem>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>
+        </events>
+    </frontend>
+
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Rganzhuyev_Testimonials before="Mage_Adminhtml">Rganzhuyev_Testimonials_Adminhtml</Rganzhuyev_Testimonials>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <rg_testimonials>
+                    <file>rganzhuyev/testimonials.xml</file>
+                </rg_testimonials>
+            </updates>
+        </layout>
+
+        <!--
+        <translate>
+            <modules>
+                <Rganzhuyev_Testimonials>
+                    <files>
+                        <default>Rganzhuyev_Testimonials.csv</default>
+                    </files>
+                </Rganzhuyev_Testimonials>
+            </modules>
+        </translate>
+        -->
+    </adminhtml>
+</config>

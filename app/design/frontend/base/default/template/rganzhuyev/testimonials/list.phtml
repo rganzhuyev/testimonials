@@ -1,0 +1,53 @@
+<?php
+/**
+ * @var $this Rganzhuyev_Testimonials_Block_Testimonials
+ */
+$testimonials = $this->getCollection();
+?>
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+<?php echo $this->getPagerHtml(); ?>
+<div>
+    <?php foreach($testimonials as $testimonial): /** @var $testimonial Rganzhuyev_Testimonials_Model_Testimonial */ ?>
+        <div class="testimonial-item">
+            <div class="testimonial-header">
+                <span class="author"><?php echo $testimonial->getData('username') ?></span> <span class="date"><?php echo $testimonial->getAddedTime(); ?></span>
+            </div>
+            <div class="testimonial-content">
+                <h5 class="title"><?php echo $this->escapeHtml($testimonial->getData('title')); ?></h5>
+                <p class="content">
+                    <?php echo $this->escapeHtml($testimonial->getData('text')); ?>
+                </p>
+            </div>
+
+        </div>
+    <?php endforeach; ?>
+
+    <?php if($this->isCustomerLoggedIn()): ?>
+    <div id="write-testimonial">
+        <div id="testimonial-form-wrapper">
+            <form id="rg_testimonials_form" action="<?php echo $this->getSubmitUrl(); ?>" method="post">
+                <?php echo $this->getBlockHtml('formkey') ?>
+                <ul class="form-list">
+                    <li class="title"><input class="required-entry" type="text" name="testimonial[title]" placeholder="<?php echo $this->__('Testimonial title'); ?>"></li>
+                    <li class="text"><textarea class="required-entry" type="text" name="testimonial[text]" placeholder="<?php echo $this->__('Testimonial text'); ?>"></textarea></li>
+                </ul>
+
+                <button type="button" class="button write-testimonial-button">
+                    <span><?php echo $this->__('Write your testimonial'); ?></span>
+                </button>
+
+                <button type="submit" class="button submit-testimonial-button">
+                    <span><?php echo $this->__('Submit'); ?></span>
+                </button>
+            </form>
+        </div>
+        <script type="text/javascript">
+            var rgTestimonialsForm = new VarienForm('rg_testimonials_form');
+            $$('.write-testimonial-button').invoke('observe', 'click', function() {
+                $('testimonial-form-wrapper').addClassName('active');
+            });
+        </script>
+    </div>
+    <?php endif; ?>
+</div>
+<?php echo $this->getPagerHtml(); ?>
