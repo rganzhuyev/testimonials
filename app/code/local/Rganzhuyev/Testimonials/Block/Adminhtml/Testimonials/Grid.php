@@ -115,6 +115,25 @@ class Rganzhuyev_Testimonials_Block_Adminhtml_Testimonials_Grid extends Mage_Adm
         return parent::_prepareColumns();
     }
 
+    protected function _addColumnFilterToCollection($column)
+    {
+        /**
+         * @var $collection Mage_Customer_Model_Resource_Customer_Collection
+         */
+        if ($collection = $this->getCollection()) {
+            $field = ( $column->getFilterIndex() ) ? $column->getFilterIndex() : $column->getIndex();
+            $cond = $column->getFilter()->getCondition();
+
+            if($field == 'username') {
+                $collection->getSelect()
+                    ->where('CONCAT(fnt.value, \' \', lnt.value) LIKE ?', $cond)
+                ;
+                return $this;
+            }
+        }
+        return parent::_addColumnFilterToCollection($column);
+    }
+
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('entity_id');
