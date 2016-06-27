@@ -12,14 +12,16 @@ class Rganzhuyev_Testimonials_Model_Resource_Testimonial_Collection extends Mage
         return parent::_beforeLoad();
     }
 
-    protected function _joinCustomer()
+    protected function _joinCustomer($select=null)
     {
         $firstNameAttribute = $this->_getCustomerResource()->getAttribute('firstname');
         $lastNameAttribute = $this->_getCustomerResource()->getAttribute('lastname');
 
+        if(!is_object($select) || !($select instanceof Varien_Db_Select)) {
+            $select = $this->getSelect();
+        }
 
-        $this
-            ->getSelect()
+        $select
             ->columns(array(
                 'username' => new Zend_Db_Expr("CONCAT(fnt.value, ' ', lnt.value)")
             ))
@@ -32,8 +34,23 @@ class Rganzhuyev_Testimonials_Model_Resource_Testimonial_Collection extends Mage
                 array('lnt' => $lastNameAttribute->getBackendTable()),
                 'lnt.entity_id=main_table.customer_id AND lnt.attribute_id='.$lastNameAttribute->getAttributeId(),
                 null
-            );
+            )
+        ;
     }
+
+    public function getSelectCountSql()
+    {
+        $countSelect = parent::getSelectCountSql();
+        if(Mage::app()->getStore()->getCode() != Mage_Core_Model_Store::ADMIN_CODE) {
+            $countSelect->reset(Varien_Db_Select::INNER_JOIN);
+            $this->_joinCustomer($countSelect);
+            $countSelect->reset(Zend_Db_Select::COLUMNS);
+            $countSelect->columns('COUNT(*)');
+        }
+
+        return $countSelect;
+    }
+
 
     /**
      * @return Mage_Customer_Model_Resource_Customer|Mage_Core_Model_Abstract
